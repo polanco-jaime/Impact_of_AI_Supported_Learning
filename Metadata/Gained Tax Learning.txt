@@ -1,0 +1,68 @@
+Analysis Name: Gained Tax Learning
+Score Column: gained_tax_learning
+Group Column: t0_Q1
+Descriptive Statistics (LaTeX Table):
+ [1] "\\begin{tabular}{lc}\n\\hline\nGroup gained_tax_learning \\\\\n\\hline\nControl Group: Traditional Path (TP) 0.27 (0.30) \\\\\nTreatment: Reduced TP + AI 0.30 (0.28) \\\\\nTreatment: Tailored AI in the Belgian Tax System 0.30 (0.26) \\\\\n\\hline\n\\end{tabular}"
+
+Linear Model Summary:
+1 
+
+Linear Model Summary:
+2 Call:
+
+Linear Model Summary:
+3 lm(formula = as.formula(paste0(score_col, "~ factor(", group_col, 
+
+Linear Model Summary:
+4     ")")), data = data)
+
+Linear Model Summary:
+5 
+
+Linear Model Summary:
+6 Residuals:
+
+Linear Model Summary:
+7      Min       1Q   Median       3Q      Max 
+
+Linear Model Summary:
+8 -1.01197 -0.15482 -0.01078  0.15682  0.72825 
+
+Linear Model Summary:
+9 
+
+Linear Model Summary:
+10 Coefficients:
+
+Linear Model Summary:
+11                Estimate Std. Error t value            Pr(>|t|)    
+
+Linear Model Summary:
+12 (Intercept)     0.27175    0.02425  11.208 <0.0000000000000002 ***
+
+Linear Model Summary:
+13 factor(t0_Q1)2  0.02475    0.03641   0.680               0.497    
+
+Linear Model Summary:
+14 factor(t0_Q1)3  0.02593    0.03158   0.821               0.412    
+
+Linear Model Summary:
+15 ---
+
+Linear Model Summary:
+16 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Linear Model Summary:
+17 
+
+Linear Model Summary:
+18 Residual standard error: 0.2796 on 427 degrees of freedom
+
+Linear Model Summary:
+19 Multiple R-squared:  0.00179,	Adjusted R-squared:  -0.002885 
+
+Linear Model Summary:
+20 F-statistic: 0.3829 on 2 and 427 DF,  p-value: 0.6821
+
+Linear Model Summary:
+21 

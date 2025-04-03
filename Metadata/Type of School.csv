@@ -1,0 +1,34 @@
+"group","fraction","treatment_group","main","color","alpha","label"
+"General Secondary Education",0.694214876033058,"1","Type of School
+Control Group","skyblue",1,"Control Group"
+"Other",0.00137741046831956,"1","Type of School
+Control Group","skyblue",1,"Control Group"
+"Secondary Education in 
+the Arts",0.00413223140495868,"1","Type of School
+Control Group","skyblue",1,"Control Group"
+"Technical Secondary Education",0.278236914600551,"1","Type of School
+Control Group","skyblue",1,"Control Group"
+"Vocational Secondary Education",0.0220385674931129,"1","Type of School
+Control Group","skyblue",1,"Control Group"
+"General Secondary Education",0.653553299492386,"2","Type of School
+AI+Reduced Path","coral",0.7,"AI+Reduced Path"
+"Other",0.00253807106598985,"2","Type of School
+AI+Reduced Path","coral",0.7,"AI+Reduced Path"
+"Secondary Education in 
+the Arts",0.0114213197969543,"2","Type of School
+AI+Reduced Path","coral",0.7,"AI+Reduced Path"
+"Technical Secondary Education",0.312182741116751,"2","Type of School
+AI+Reduced Path","coral",0.7,"AI+Reduced Path"
+"Vocational Secondary Education",0.0203045685279188,"2","Type of School
+AI+Reduced Path","coral",0.7,"AI+Reduced Path"
+"General Secondary Education",0.647790055248619,"3","Type of School
+Tailored AI","lightgreen",0.5,"Tailored AI"
+"Other",0.0069060773480663,"3","Type of School
+Tailored AI","lightgreen",0.5,"Tailored AI"
+"Secondary Education in 
+the Arts",0.00552486187845304,"3","Type of School
+Tailored AI","lightgreen",0.5,"Tailored AI"
+"Technical Secondary Education",0.316298342541436,"3","Type of School
+Tailored AI","lightgreen",0.5,"Tailored AI"
+"Vocational Secondary Education",0.0234806629834254,"3","Type of School
+Tailored AI","lightgreen",0.5,"Tailored AI"
