@@ -3,9 +3,10 @@
 #https://lost-stats.github.io/Model_Estimation/Research_Design/two_by_two_difference_in_difference.html
 #setwd("C:/Users/USER/Desktop/DID roads/")
 
- 
+
 if (Sys.info()["nodename"] ==  "Jaimes-MacBook-Pro.local" ){
-  General_path = "/Users/jaimepolanco-jimenez/Library/CloudStorage/OneDrive-PontificiaUniversidadJaveriana/01_research/AI-Assisted-Financial-Literacy/" 
+  general_path = "/Users/jaimepolanco-jimenez/Library/CloudStorage/OneDrive-PontificiaUniversidadJaveriana/01_research/AI-Assisted-Financial-Literacy/Impact_of_AI_Supported_Learning/"
+  General_path =general_path
   setwd(General_path)
   data_dir <- paste0(General_path , "Data/")
   graphs_dir <-  paste0(General_path , "Graph/") 
@@ -18,6 +19,7 @@ if (Sys.info()["nodename"] ==  "Jaimes-MacBook-Pro.local" ){
   graphs_dir <-  paste0(General_path , "Graph/") 
   tables_dir <- paste0(General_path , "Tables/")   
 }
+
 
 
 global_path = General_path
@@ -34,7 +36,27 @@ for (i in 1:length(lista) ) {
   lapply(lista[i], library, character.only = TRUE)
 }
 getwd()
-source("~/Library/CloudStorage/OneDrive-PontificiaUniversidadJaveriana/01_research/AI-Assisted-Financial-Literacy/Scripts/R/function_cleaning.R")
-source("~/Library/CloudStorage/OneDrive-PontificiaUniversidadJaveriana/01_research/AI-Assisted-Financial-Literacy/Scripts/R/function analysis.R")
+
+source(paste0(general_path,'Scripts/R/functions/function_cleaning.R' ))
+
+source(paste0(general_path,'Scripts/R/functions/function analysis.R' ))
+# source("~/Library/CloudStorage/OneDrive-PontificiaUniversidadJaveriana/01_research/AI-Assisted-Financial-Literacy/Scripts/R/function analysis.R")
 
 # source("scripts/R/apis.R")
+
+# #### 1. Pretest - Reading csv #### 
+# 
+# pretest <- read_csv("~/Downloads/results-survey457438 (39).csv")
+# pretest_st <- read_csv("~/Downloads/results-survey959811 (16).csv")
+# 
+# #### 2. Postest - Reading csv #### 
+# 
+# posttest <- read_csv("~/Downloads/results-survey324716 (39).csv")
+# #### 3. Postposttest - Reading csv #### 
+# postposttest <- read_csv("~/Downloads/results-survey767828 (2).csv")
+
+data <- arrow::read_parquet("Data/data.parquet")
+
+data <- data[data$pre_flag_duplicate_id_score==0,]
+# write_csv(data, "data_trash.csv")
+

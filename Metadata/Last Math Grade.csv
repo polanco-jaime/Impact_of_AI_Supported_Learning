@@ -1,31 +1,31 @@
 "group","fraction","treatment_group","main","color","alpha","label"
-"50% to 59%",0.224517906336088,"1","Last Math Grade
+"50% to 59%",0.230573248407643,"1","Last Math Grade
 Control Group","skyblue",1,"Control Group"
-"60% to 69%",0.304407713498623,"1","Last Math Grade
+"60% to 69%",0.300636942675159,"1","Last Math Grade
 Control Group","skyblue",1,"Control Group"
-"70% to 79%",0.238292011019284,"1","Last Math Grade
+"70% to 79%",0.239490445859873,"1","Last Math Grade
 Control Group","skyblue",1,"Control Group"
-"Over 80%",0.151515151515152,"1","Last Math Grade
+"Over 80%",0.154140127388535,"1","Last Math Grade
 Control Group","skyblue",1,"Control Group"
-"Under 50%",0.081267217630854,"1","Last Math Grade
+"Under 50%",0.0751592356687898,"1","Last Math Grade
 Control Group","skyblue",1,"Control Group"
-"50% to 59%",0.229695431472081,"2","Last Math Grade
+"50% to 59%",0.22864019253911,"2","Last Math Grade
 AI+Reduced Path","coral",0.7,"AI+Reduced Path"
-"60% to 69%",0.315989847715736,"2","Last Math Grade
+"60% to 69%",0.324909747292419,"2","Last Math Grade
 AI+Reduced Path","coral",0.7,"AI+Reduced Path"
-"70% to 79%",0.236040609137056,"2","Last Math Grade
+"70% to 79%",0.234657039711191,"2","Last Math Grade
 AI+Reduced Path","coral",0.7,"AI+Reduced Path"
-"Over 80%",0.147208121827411,"2","Last Math Grade
+"Over 80%",0.143200962695548,"2","Last Math Grade
 AI+Reduced Path","coral",0.7,"AI+Reduced Path"
-"Under 50%",0.0710659898477157,"2","Last Math Grade
+"Under 50%",0.0685920577617329,"2","Last Math Grade
 AI+Reduced Path","coral",0.7,"AI+Reduced Path"
-"50% to 59%",0.201657458563536,"3","Last Math Grade
+"50% to 59%",0.20694087403599,"3","Last Math Grade
 Tailored AI","lightgreen",0.5,"Tailored AI"
-"60% to 69%",0.323204419889503,"3","Last Math Grade
+"60% to 69%",0.320051413881748,"3","Last Math Grade
 Tailored AI","lightgreen",0.5,"Tailored AI"
-"70% to 79%",0.267955801104972,"3","Last Math Grade
+"70% to 79%",0.263496143958869,"3","Last Math Grade
 Tailored AI","lightgreen",0.5,"Tailored AI"
-"Over 80%",0.121546961325967,"3","Last Math Grade
+"Over 80%",0.123393316195373,"3","Last Math Grade
 Tailored AI","lightgreen",0.5,"Tailored AI"
-"Under 50%",0.0856353591160221,"3","Last Math Grade
+"Under 50%",0.0861182519280206,"3","Last Math Grade
 Tailored AI","lightgreen",0.5,"Tailored AI"

@@ -1,31 +1,31 @@
 "group","fraction","treatment_group","main","color","alpha","label"
-"Agree",0.406639004149378,"1","Do you think taxes are fair in your country?
+"Agree",0.393085787451985,"1","I expect AI can help me learn about taxes.
 Control Group","skyblue",1,"Control Group"
-"Disagree",0.130013831258645,"1","Do you think taxes are fair in your country?
+"Disagree",0.131882202304738,"1","I expect AI can help me learn about taxes.
 Control Group","skyblue",1,"Control Group"
-"Neutral",0.266943291839557,"1","Do you think taxes are fair in your country?
+"Neutral",0.274007682458387,"1","I expect AI can help me learn about taxes.
 Control Group","skyblue",1,"Control Group"
-"Strongly Agree",0.142461964038728,"1","Do you think taxes are fair in your country?
+"Strongly Agree",0.145966709346991,"1","I expect AI can help me learn about taxes.
 Control Group","skyblue",1,"Control Group"
-"Strongly Disagree",0.053941908713693,"1","Do you think taxes are fair in your country?
+"Strongly Disagree",0.0550576184379001,"1","I expect AI can help me learn about taxes.
 Control Group","skyblue",1,"Control Group"
-"Agree",0.414852752880922,"2","Do you think taxes are fair in your country?
+"Agree",0.425273390036452,"2","I expect AI can help me learn about taxes.
 AI+Reduced Path","coral",0.7,"AI+Reduced Path"
-"Disagree",0.111395646606914,"2","Do you think taxes are fair in your country?
+"Disagree",0.103280680437424,"2","I expect AI can help me learn about taxes.
 AI+Reduced Path","coral",0.7,"AI+Reduced Path"
-"Neutral",0.29449423815621,"2","Do you think taxes are fair in your country?
+"Neutral",0.295261239368165,"2","I expect AI can help me learn about taxes.
 AI+Reduced Path","coral",0.7,"AI+Reduced Path"
-"Strongly Agree",0.152368758002561,"2","Do you think taxes are fair in your country?
+"Strongly Agree",0.149453219927096,"2","I expect AI can help me learn about taxes.
 AI+Reduced Path","coral",0.7,"AI+Reduced Path"
-"Strongly Disagree",0.0268886043533931,"2","Do you think taxes are fair in your country?
+"Strongly Disagree",0.0267314702308627,"2","I expect AI can help me learn about taxes.
 AI+Reduced Path","coral",0.7,"AI+Reduced Path"
-"Agree",0.395833333333333,"3","Do you think taxes are fair in your country?
+"Agree",0.390967741935484,"3","I expect AI can help me learn about taxes.
 Tailored AI","lightgreen",0.5,"Tailored AI"
-"Disagree",0.111111111111111,"3","Do you think taxes are fair in your country?
+"Disagree",0.114838709677419,"3","I expect AI can help me learn about taxes.
 Tailored AI","lightgreen",0.5,"Tailored AI"
-"Neutral",0.315277777777778,"3","Do you think taxes are fair in your country?
+"Neutral",0.31741935483871,"3","I expect AI can help me learn about taxes.
 Tailored AI","lightgreen",0.5,"Tailored AI"
-"Strongly Agree",0.144444444444444,"3","Do you think taxes are fair in your country?
+"Strongly Agree",0.149677419354839,"3","I expect AI can help me learn about taxes.
 Tailored AI","lightgreen",0.5,"Tailored AI"
-"Strongly Disagree",0.0333333333333333,"3","Do you think taxes are fair in your country?
+"Strongly Disagree",0.0270967741935484,"3","I expect AI can help me learn about taxes.
 Tailored AI","lightgreen",0.5,"Tailored AI"
