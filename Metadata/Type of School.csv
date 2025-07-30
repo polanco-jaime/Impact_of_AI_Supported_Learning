@@ -1,34 +1,34 @@
 "group","fraction","treatment_group","main","color","alpha","label"
-"General Secondary Education",0.680254777070064,"1","Type of School
+"General Secondary Education",0.698166431593794,"1","Type of School
 Control Group","skyblue",1,"Control Group"
-"Other",0.00254777070063694,"1","Type of School
+"Other",0.00141043723554302,"1","Type of School
 Control Group","skyblue",1,"Control Group"
 "Secondary Education in 
-the Arts",0.00382165605095541,"1","Type of School
+the Arts",0.00282087447108604,"1","Type of School
 Control Group","skyblue",1,"Control Group"
-"Technical Secondary Education",0.292993630573248,"1","Type of School
+"Technical Secondary Education",0.277856135401975,"1","Type of School
 Control Group","skyblue",1,"Control Group"
-"Vocational Secondary Education",0.0203821656050955,"1","Type of School
+"Vocational Secondary Education",0.0197461212976023,"1","Type of School
 Control Group","skyblue",1,"Control Group"
-"General Secondary Education",0.658243080625752,"2","Type of School
+"General Secondary Education",0.659779614325069,"2","Type of School
 AI+Reduced Path","coral",0.7,"AI+Reduced Path"
-"Other",0.00240673886883273,"2","Type of School
+"Other",0.00137741046831956,"2","Type of School
 AI+Reduced Path","coral",0.7,"AI+Reduced Path"
 "Secondary Education in 
-the Arts",0.0036101083032491,"2","Type of School
+the Arts",0.00413223140495868,"2","Type of School
 AI+Reduced Path","coral",0.7,"AI+Reduced Path"
-"Technical Secondary Education",0.316486161251504,"2","Type of School
+"Technical Secondary Education",0.315426997245179,"2","Type of School
 AI+Reduced Path","coral",0.7,"AI+Reduced Path"
-"Vocational Secondary Education",0.0192539109506619,"2","Type of School
+"Vocational Secondary Education",0.0192837465564738,"2","Type of School
 AI+Reduced Path","coral",0.7,"AI+Reduced Path"
-"General Secondary Education",0.6426735218509,"3","Type of School
+"General Secondary Education",0.664222873900293,"3","Type of School
 Tailored AI","lightgreen",0.5,"Tailored AI"
-"Other",0.0077120822622108,"3","Type of School
+"Other",0.00586510263929619,"3","Type of School
 Tailored AI","lightgreen",0.5,"Tailored AI"
 "Secondary Education in 
-the Arts",0.0051413881748072,"3","Type of School
+the Arts",0.00293255131964809,"3","Type of School
 Tailored AI","lightgreen",0.5,"Tailored AI"
-"Technical Secondary Education",0.320051413881748,"3","Type of School
+"Technical Secondary Education",0.312316715542522,"3","Type of School
 Tailored AI","lightgreen",0.5,"Tailored AI"
-"Vocational Secondary Education",0.0244215938303342,"3","Type of School
+"Vocational Secondary Education",0.0146627565982405,"3","Type of School
 Tailored AI","lightgreen",0.5,"Tailored AI"

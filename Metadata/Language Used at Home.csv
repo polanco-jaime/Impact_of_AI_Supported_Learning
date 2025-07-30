@@ -1,19 +1,19 @@
 "group","fraction","treatment_group","main","color","alpha","label"
-"Dutch",0.834394904458599,"1","Language Used at Home
+"Dutch",0.834978843441467,"1","Language Used at Home
 Control Group","skyblue",1,"Control Group"
-"French",0.0560509554140127,"1","Language Used at Home
+"French",0.0578279266572638,"1","Language Used at Home
 Control Group","skyblue",1,"Control Group"
-"Other",0.109554140127389,"1","Language Used at Home
+"Other",0.107193229901269,"1","Language Used at Home
 Control Group","skyblue",1,"Control Group"
-"Dutch",0.832731648616125,"2","Language Used at Home
+"Dutch",0.829201101928375,"2","Language Used at Home
 AI+Reduced Path","coral",0.7,"AI+Reduced Path"
-"French",0.0637785800240674,"2","Language Used at Home
+"French",0.0647382920110193,"2","Language Used at Home
 AI+Reduced Path","coral",0.7,"AI+Reduced Path"
-"Other",0.103489771359807,"2","Language Used at Home
+"Other",0.106060606060606,"2","Language Used at Home
 AI+Reduced Path","coral",0.7,"AI+Reduced Path"
-"Dutch",0.811053984575835,"3","Language Used at Home
+"Dutch",0.813782991202346,"3","Language Used at Home
 Tailored AI","lightgreen",0.5,"Tailored AI"
-"French",0.06426735218509,"3","Language Used at Home
+"French",0.0586510263929619,"3","Language Used at Home
 Tailored AI","lightgreen",0.5,"Tailored AI"
-"Other",0.124678663239075,"3","Language Used at Home
+"Other",0.127565982404692,"3","Language Used at Home
 Tailored AI","lightgreen",0.5,"Tailored AI"

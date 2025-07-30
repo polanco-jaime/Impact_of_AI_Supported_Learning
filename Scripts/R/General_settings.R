@@ -44,19 +44,43 @@ source(paste0(general_path,'Scripts/R/functions/function analysis.R' ))
 
 # source("scripts/R/apis.R")
 
-# #### 1. Pretest - Reading csv #### 
-# 
-# pretest <- read_csv("~/Downloads/results-survey457438 (39).csv")
-# pretest_st <- read_csv("~/Downloads/results-survey959811 (16).csv")
-# 
-# #### 2. Postest - Reading csv #### 
-# 
-# posttest <- read_csv("~/Downloads/results-survey324716 (39).csv")
-# #### 3. Postposttest - Reading csv #### 
-# postposttest <- read_csv("~/Downloads/results-survey767828 (2).csv")
-
+# # #### 1. Pretest - Reading csv #### 
+# # 
+# path_data= '~/Library/CloudStorage/OneDrive-PontificiaUniversidadJaveriana/01_research/AI-Assisted-Financial-Literacy/Data/'
+# pretest <- read_csv(paste0(path_data,"results-survey457438.csv") )
+# # 
+# pretest_st <- read_csv(paste0(path_data,"results-survey959811.csv") )
+# # # 
+# # # #### 2. Postest - Reading csv #### 
+# # # 
+# posttest <-  read_csv(paste0(path_data,"results-survey324716.csv") )
+# # 
+# # # #### 3. Postposttest - Reading csv #### 
+# postposttest <- read_csv(paste0(path_data,"results-survey767828.csv") )  
+# # 
+# # 
 data <- arrow::read_parquet("Data/data.parquet")
+colnames(data)[16] ='Q1'
 
-data <- data[data$pre_flag_duplicate_id_score==0,]
-# write_csv(data, "data_trash.csv")
+# 
+# A= data[data$pre_flag_duplicate_id_score==1,]
+# data <- data[data$pre_flag_duplicate_id_score==0,]
+# data <- data[data$pre_flag_duplicate_id==0 & data$pre_flag_duplicate_id_score==0,]
+# 
+# summary(data['pre_interviewtime'])
+# data =  data[data['pre_interviewtime']/60 >=9 , ]
+ 
+# table(data$post_interviewtime>=200)
+# data <- data[data$post_interviewtime>=100 | is.na(data$post_interviewtime)==T ,]
+data <- data[data$pre_interviewtime>=220   ,]
+# data <- data[data$post_interviewtime>=60 | is.na(data$post_interviewtime)==T ,]
+# data = data[(data$pre_flag_duplicate_id)==0, ]
 
+# data = data[is.na(data$post_flag_duplicate_id)==T |(data$post_flag_duplicate_id)==0, ]
+data = data[is.na(data$post_flag_duplicate_id_score)==T | (data$post_flag_duplicate_id_score)==0, ]
+# # write_csv(data, "data_trash.csv")
+colnames(data)[16] ='Q1'
+# 
+ 
+# data =  data[data['pre_interviewtime']/60 >=5 , ]
+fractions_by_group_print(data, 'Q1')

@@ -2,11 +2,16 @@
 #### 1. Reading #### 
 library(readr)
 library(dplyr)
-# postposttest_piloto2 <- read_csv("~/Downloads/results-survey324716 (piloto).csv")
+library(arrow)
+# posttest_out = arrow::read_parquet( "Data/posttest_out.parquet")
+posttest_out = arrow::read_parquet( "Data/postest_out2.parquet")
 
-posttest_out = arrow::read_parquet( "posttest_out.parquet")
+colnames(posttest)
+colnames(posttest_out)
+ 
+
 ##### 1.1 Flag duplicates ####
-postposttest <- flag_duplicates(postposttest)
+# postposttest <- flag_duplicates(postposttest)
 ##### 1.2 Q1 group ####
 
 postposttest <- postposttest %>%
@@ -28,82 +33,17 @@ library(dplyr)
 ##### 1.1 Flag duplicates ####
 postposttest <- flag_duplicates(postposttest)
 ##### 1.2 Q1 group ####
+ 
 
-postposttest <- postposttest %>%
-  mutate(Q1 = case_when(
-    grepl("Leerpad groep 1", trimws(G00Q16)) ~ "1",
-    grepl("Leerpad groep 2", trimws(G00Q16)) ~ "2",
-    grepl("Leerpad groep 3", trimws(G00Q16)) ~ "3",
-    TRUE ~ G00Q16
-  ))
 table(postposttest$Q1)
 table(is.na(postposttest$G00Q16))
-198/(198+958)
+
 # Lost Around 18% for those who openened but not answer any question
 postposttest = postposttest[is.na(postposttest$Q1)==F , ]
 
 ##### 1.2 Resolve duplicates ####
-# postposttest <- resolve_duplicates(postposttest)
-# 
-# postposttest <- postposttest[postposttest$id!=311, ]
-# # postposttest[postposttest$id==155, ]$G04Q24
-# postposttest <- postposttest[postposttest$id!=315, ]
-# postposttest <- postposttest[postposttest$id!=434, ] #duplicate with 323
-# postposttest <- postposttest[postposttest$id!=1048, ] #duplicate with 101 #Noreplaced -> Post-postposttest Sint-Barbaracollege
-# postposttest <- postposttest[postposttest$id!=1030, ] #duplicate with 1028
-# postposttest <- postposttest[postposttest$id!=986, ] #duplicate with 123 -> Post-postposttest
-# postposttest <- postposttest[postposttest$id!=984, ] #duplicate with 141 -> Post-postposttest
-# postposttest <- postposttest[postposttest$id!=980, ] #duplicate with 137 -> Post-postposttest
-# postposttest <- postposttest[postposttest$id!=960, ] #duplicate with 114 -> Post-postposttest
-# postposttest <- postposttest[postposttest$id!=985, ] #duplicate with 125 -> Post-postposttest
-# postposttest <- postposttest[postposttest$id!=974, ] #duplicate with 115 -> Post-postposttest
-# postposttest <- postposttest[postposttest$id!=978, ] #duplicate with 118 -> Post-postposttest
-# postposttest <- postposttest[postposttest$id!=980, ] #duplicate with 137 -> Post-postposttest
-# postposttest <- postposttest[postposttest$id!=988, ] #duplicate with 120 -> Post-postposttest
-# postposttest <- postposttest[postposttest$id!=987, ] #duplicate with 139 -> Post-postposttest
-# postposttest <- postposttest[postposttest$id!=1024, ] #duplicate with 122 -> Post-postposttest
-# postposttest <- postposttest[postposttest$id!=977, ] #duplicate with 117 -> Post-postposttest
-# postposttest <- postposttest[postposttest$id!=117, ] #duplicate with 110  
-# postposttest <- postposttest[postposttest$id!=983, ] #duplicate with 142 -> Post-postposttest
-# postposttest <- postposttest[postposttest$id!=979, ] #duplicate with 138 -> Post-postposttest 
-# postposttest <- postposttest[postposttest$id!=970, ] #duplicate with 116 -> Post-postposttest 
-# postposttest <- postposttest[postposttest$id!=982, ] #duplicate with 119 -> Post-postposttest 
-# 
-# postposttest <- postposttest[postposttest$id!=59, ] #duplicate with 31  
-# postposttest <- postposttest[postposttest$id!=1061, ] #duplicate with 431  
-# postposttest <- postposttest[postposttest$id!=1140, ] #duplicate with 31 -> Post-postposttest 
-# postposttest <- postposttest[postposttest$id!=1130, ] #duplicate with 61 -> Post-postposttest 
-# postposttest <- postposttest[postposttest$id!=1124, ] #duplicate with 30 -> Post-postposttest 
-# postposttest <- postposttest[postposttest$id!=1117, ] #duplicate with 415 -> Post-postposttest 
-# postposttest <- postposttest[postposttest$id!=1112, ] #duplicate with 407 -> Post-postposttest 
-# postposttest <- postposttest[postposttest$id!=1111, ] #duplicate with 400 -> Post-postposttest 
-# postposttest <- postposttest[postposttest$id!=1106, ] #duplicate with 406 -> Post-postposttest 
-# postposttest <- postposttest[postposttest$id!=1097, ] #duplicate with 19 -> Post-postposttest 
-# postposttest <- postposttest[postposttest$id!=1085, ] #duplicate with 270 -> Post-postposttest 
-# postposttest <- postposttest[postposttest$id!=374, ] #duplicate with 369
-# postposttest <- postposttest[postposttest$id!=106, ] #duplicate with 40
-# postposttest <- postposttest[postposttest$id!=164, ] #duplicate with 163
-# postposttest <- postposttest[postposttest$id!=171, ] #duplicate with 165
-# postposttest <- postposttest[postposttest$id!=168, ] #duplicate with 165
-# postposttest <- postposttest[postposttest$id!=177, ] #duplicate with 176
-# postposttest <- postposttest[postposttest$id!=178, ] #duplicate with 173
-# postposttest <- postposttest[postposttest$id!=206, ] #duplicate with 185
-# postposttest <- postposttest[postposttest$id!=222, ] #duplicate with 221
-# postposttest <- postposttest[postposttest$id!=224, ] #duplicate with 211
-# postposttest <- postposttest[postposttest$id!=308, ] #duplicate with 190
-# postposttest <- postposttest[postposttest$id!=309, ] #duplicate with 160
-# postposttest <- postposttest[postposttest$id!=254, ] #duplicate with 327
-# postposttest <- postposttest[postposttest$id!=394, ] #duplicate with 475
-# 
-# postposttest <- postposttest[postposttest$id!=379, ] #duplicate with 1155
-# postposttest <- postposttest[postposttest$id!=1143, ] #duplicate with 799
 
-##### 1.3 Droping no completed at all #### 
-# postposttest =postposttest[is.na(postposttest$`PT01[SQ005]`)==F,]
-# table(is.na(postposttest$PTF11))
-
-# Lost Around 12% for those who Dont complete main questions about learning
-
+ 
 #### 2. Personal Data #### 
 ##### 2.1 full name  ####
 postposttest$G01Q01 = homogenize_name(postposttest$G01Q01)
@@ -665,6 +605,9 @@ postposttest$G01Q01 = fix_names(postposttest_name = "IEBEN_COENE",
 postposttest$G01Q01 = fix_names(postposttest_name = "MYKOLAI_IVANENKO",
                             pretest_name = "IVANENKO_MYKOLAI",
                             postposttest, "G01Q01")
+postposttest$G01Q01 = fix_names(postposttest_name = "WIKTOR_FRANCISZEK_BAZYLUK",
+                                pretest_name = "WIKTOR_BAZYLUK",
+                                postposttest, "G01Q01")
 ##### 2.2 Fixing treatment group ####
 postposttest$AT=F
 postposttest$Q1 = ifelse(postposttest$G01Q01=="BOUCKAERT_LARA",'2',postposttest$Q1   )
@@ -879,6 +822,7 @@ postposttest$G01Q03=ifelse(postposttest$G01Q01=="MATISSE_VERHEYEN",
 postposttest$G01Q05 <- homogenize_school_name(postposttest$G01Q05)
 
 ###### 2.4.1 Fixing school name ####
+
 postposttest$G01Q05 = ifelse(postposttest$G01Q01=="IAN_VAN_WEYENBERGHE",
                          'Sint-Paulusinstituut',
                          postposttest$G01Q05)
@@ -1549,7 +1493,10 @@ postposttest$G01Q05 = ifelse(postposttest$G01Q01=="VINCENT_THIRIART",
 
 postposttest$G01Q05 = ifelse(postposttest$G01Q01=="HENRY_BERQUIN",
                          'Sint-Barbaracollege',postposttest$G01Q05   )
-
+postposttest$G01Q05 = ifelse(postposttest$G01Q01=="DE_WINTER_ELINE" &
+                             postposttest$Q1=='2',
+                             'Sintpaulus Instituut',
+                             postposttest$G01Q05)
 ##### 2.5 Course of Student  ####
 # postposttest$G01Q06 <- homogenize_course_group(postposttest$G01Q06)
 ##### 2.6 Type of School  ####
@@ -1702,32 +1649,22 @@ postposttest$G01Q01 <- as.character(postposttest$G01Q01)
 
 # postposttest$G01Q01 <- iconv(postposttest$G01Q01, to = "ASCII//TRANSLIT")
 
-postposttest$id_student <- paste0(as.character(postposttest$Q1), "_", postposttest$G01Q03, "_",
-                              postposttest$G01Q05,"_", postposttest$G01Q01)
-# postposttest = anonymize_column(postposttest, "id_student")
-
 
 
 
 #### 7. Pretest extra cleaning ####
 
-postposttest$id_student2 <- paste0(
-  as.character(postposttest$Q1), "_",
-  tolower( substr( 
-    gsub( " ", "", gsub("[[:punct:]\\s]", "", postposttest$G01Q05) ), 1, 8 ) ), "_",
-  postposttest$G01Q01
-)
 
-postposttest= postposttest[postposttest$Score!=0, ]
+
+# postposttest= postposttest[postposttest$Score!=0, ]
 
 postposttest = postposttest[is.na(postposttest$Score)==F, ]
+colnecesaries = colnames(postposttest)
 
-postposttest = flag_last_duplicate(postposttest, "id_student2")
+out <- bind_rows(postposttest, posttest_out)
 
-# table(postposttest$flag_duplicate_id_score)
-# table(postposttest$flag_duplicate_id)
-# 
-# a = postposttest[postposttest$flag_duplicate==1,]
+postposttest = out[, colnecesaries]
+
 # a = postposttest[postposttest$flag_duplicate_id_score==1,]
 # arrow::write_parquet(subset(postposttest,  postposttest$flag_duplicate_id_score==1), "postest_out2.parquet")
 # 
@@ -1757,5 +1694,42 @@ postposttest = flag_last_duplicate(postposttest, "id_student2")
 
 
 # postposttest = postposttest[postposttest$groupTime14859>59, ]
+###### Last Cleaning for xjoin ####
 
+postposttest$G01Q01 <- ifelse(postposttest$id==5, 
+                              'WIKTOR_FRANCISZEK_BAZYLUK', 
+                              postposttest$G01Q01)
 
+postposttest$G01Q01 <- ifelse(postposttest$id==8, 
+                              'MILAN_VERMEERSCH', 
+                              postposttest$G01Q01)
+
+postposttest$Q1 <- ifelse(postposttest$id==8, 
+                              '3', 
+                              postposttest$Q1)
+
+postposttest$G01Q05 <- ifelse(postposttest$id==1147, 
+                              'Broederschool Handel', 
+                              postposttest$G01Q05)
+
+postposttest$G01Q05 <- ifelse(postposttest$id==225, 
+                              'Sintpaulus Instituut', 
+                              postposttest$G01Q05)
+
+#### ID Creation ####
+postposttest$id_student <- paste0(as.character(postposttest$Q1), "_", postposttest$G01Q03, "_",
+                                  postposttest$G01Q05,"_", postposttest$G01Q01)
+# postposttest = anonymize_column(postposttest, "id_student")
+postposttest$id_student2 <- paste0(
+  as.character(postposttest$Q1), "_",
+  tolower( substr( 
+    gsub( " ", "", gsub("[[:punct:]\\s]", "", postposttest$G01Q05) ), 1, 8 ) ), "_",
+  postposttest$G01Q01
+)
+postposttest = flag_last_duplicate(postposttest, "id_student2")
+
+table(postposttest$flag_duplicate_id_score)
+table(postposttest$flag_duplicate_id)
+# 
+postposttest = postposttest[postposttest$flag_duplicate_id==0,]
+# postposttest = postposttest[postposttest$flag_duplicate_id_score==0,]

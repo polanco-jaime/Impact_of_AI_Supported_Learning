@@ -22,23 +22,29 @@ pretest = rbind(pretest, pretest_st)
 ##### 1.1 Flag duplicates ####
 pretest <- flag_duplicates(pretest)
 ##### 1.2 Resolve duplicates ####
+table(is.na(pretest$Q1))
 pretest <- subset(pretest, is.na(pretest$Q1)==F)
-pretest <- pretest[pretest$id!=1142, ]  #duplicated with 1653
-pretest <- pretest[pretest$id!=2290, ] #duplicated with 1706
-pretest <- pretest[pretest$id!=2351, ] #duplicated with 756
-pretest <- pretest[pretest$id!=2314, ] #duplicated with 2313
-pretest <- pretest[pretest$id!=2293, ] #duplicated with 1698
-pretest <- pretest[pretest$id!=2774, ] #duplicated with 1225
-pretest <- pretest[pretest$id!=737, ] #duplicated with 695
-pretest <- pretest[pretest$id!=2393, ] #duplicated with 2467
-pretest <- pretest[pretest$id!=2387, ] #duplicated with 2466
+table(is.na(pretest$Q1))
+pretest$Q1 = as.character(pretest$Q1)
+# pretest <- pretest[pretest$id!=1142, ]  #duplicated with 1653
+# pretest <- pretest[pretest$id!=2290, ] #duplicated with 1706
+# pretest <- pretest[pretest$id!=2351, ] #duplicated with 756
+# pretest <- pretest[pretest$id!=2314, ] #duplicated with 2313
+# pretest <- pretest[pretest$id!=2293, ] #duplicated with 1698
+# pretest <- pretest[pretest$id!=2774, ] #duplicated with 1225
+# pretest <- pretest[pretest$id!=737, ] #duplicated with 695
+# pretest <- pretest[pretest$id!=2393, ] #duplicated with 2467
+# pretest <- pretest[pretest$id!=2387, ] #duplicated with 2466
 #pretest <- resolve_duplicates(pretest)
 ##### 1.3 Droping no completed at all #### 
-pretest =pretest[is.na(pretest$`AS06[SQ001]`)==F,]
+table(is.na(pretest$`AS06[SQ001]`))
+# pretest_no =pretest[is.na(pretest$`AS06[SQ001]`)==T,]
+# pretest =pretest[is.na(pretest$`AS06[SQ001]`)==F,]
 
 pretest =pretest[ (pretest$G01Q04)!="Test",]
-
-  #### 2. Checking randomization #### 
+pretest <- pretest[!grepl("test", tolower(pretest$G01Q01), ignore.case = TRUE), ]
+pretest <- pretest[is.na(pretest$G01Q01)==F, ]
+#### 2. Checking randomization #### 
  
 number_by_group(pretest, 'Q1')
 
@@ -46,8 +52,12 @@ fractions_by_group(pretest, 'Q1')
 
 
 ##### 2.1 Time to respond ####
-hist(pretest$interviewtime/60,10)
-summary(pretest$interviewtime/60)
+summary(pretest$groupTime12808)
+
+pretest$interaction_time_minutes =  as.numeric(pretest$datestamp-pretest$startdate)
+summary(pretest$interaction_time_minutes)
+# pretest = pretest[pretest$interaction_time_minutes>=5, ]
+
 #### 3. Personal information cleaning ####
 ##### 3.1 full name  ####
 pretest$G01Q01 = homogenize_name(pretest$G01Q01)
@@ -66,6 +76,9 @@ table(pretest$G01Q03)
 pretest$G01Q04 = homogenize_cities(pretest$G01Q04)
 unique(pretest$G01Q04)
 ##### 3.4 School Name  ####
+sort(unique(pretest$G01Q05))
+# 1. Uppercase and Initial Cleaning
+
 pretest$G01Q05 <- homogenize_school_name(pretest$G01Q05)
 unique(pretest$G01Q05)
  
@@ -221,6 +234,7 @@ pretest$PTF01+pretest$PTF02+pretest$PTF06+pretest$PTF07+pretest$PTF09+pretest$PT
 
 pretest$Score = (pretest$PTF01+pretest$PTF02+pretest$PTF06+pretest$PTF07+pretest$PTF09+pretest$PTF10+pretest$PTF11)/7
 
+pretest$Score = ifelse(is.na(pretest$Score)==T, 0, pretest$Score)
 summary(pretest$Score)
   
 ##### 6.3 Measure Emotional Attitudes ####
@@ -357,6 +371,7 @@ pretest$G01Q03 = ifelse(pretest$G01Q01=="ANAS_ELASSOOUDI",'Boy',pretest$G01Q03)
 
 ###### Solving joining data ####
 pretest$Q1 <- trimws(pretest$Q1)
+table(pretest$Q1)
 pretest$G01Q03 <- trimws(pretest$G01Q03)
 pretest$G01Q05 <- trimws(pretest$G01Q05)
 pretest$G01Q01 <- trimws(pretest$G01Q01)
@@ -364,7 +379,12 @@ pretest$Q1 <- as.character(pretest$Q1)
 pretest$G01Q03 <- as.character(pretest$G01Q03)
 pretest$G01Q05 <- as.character(pretest$G01Q05)
 pretest$G01Q01 <- as.character(pretest$G01Q01)
+##### More clenaing ####
+pretest$G01Q01 <- ifelse(pretest$id==277, 
+                              'OSAKPAMWAN_AGHO', 
+                         pretest$G01Q01)
 
+##### end ####
 # pretest$G01Q01 <- iconv(pretest$G01Q01, to = "ASCII//TRANSLIT")
 
 pretest$id_student <- paste0(as.character(pretest$Q1), "_", pretest$G01Q03, "_",
@@ -394,7 +414,9 @@ flag_last_duplicate <- function(df, grouping_col_name = "id_student") {
 
 # Apply the function
 pretest = flag_last_duplicate(pretest, "id_student")
-# table(pretest$flag_duplicate)
+table(pretest$flag_duplicate_id)
+table(pretest$flag_duplicate_id_score)
+
 # pretest <- subset(pretest,  pretest$flag_duplicate==0)
 pretest$id_student2 <- paste0(
                                 as.character(pretest$Q1), "_",
@@ -410,8 +432,9 @@ summary(pretest$Score)
 sd(pretest$Score, na.rm = T)
 
 summary(pretest$groupTime12808)
-p1=quantile(pretest$groupTime12808, probs = 0.1)
-p99=quantile(pretest$groupTime12808, probs = 0.99)
+time = pretest[is.na(pretest$groupTime12808)==F , ]
+p1=quantile(time$groupTime12808, probs = 0.05, )
+p99=quantile(time$groupTime12808, probs = 0.99)
 
 pretest$anormal_asnwering_flag= ifelse(
   pretest$groupTime12808>=p99 |
@@ -419,5 +442,7 @@ pretest$anormal_asnwering_flag= ifelse(
 )
 table(pretest$anormal_asnwering_flag)
 # pretest = pretest[pretest$anormal_asnwering_flag==0,]
-pretest = pretest[pretest$flag_duplicate_id==0,]
-
+# pretest = pretest[pretest$flag_duplicate_id==0,]
+# 
+# pretest = pretest[pretest$flag_duplicate_id_score==0,]
+# pretest$id = seq(1:nrow(pretest))

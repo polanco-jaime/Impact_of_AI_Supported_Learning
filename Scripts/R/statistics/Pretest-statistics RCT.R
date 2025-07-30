@@ -2,28 +2,39 @@
 general_path = "/Users/jaimepolanco-jimenez/Library/CloudStorage/OneDrive-PontificiaUniversidadJaveriana/01_research/AI-Assisted-Financial-Literacy/Impact_of_AI_Supported_Learning/"
 
 source(paste0(general_path,"Scripts/R/General_settings.R" ))
-
-fractions_by_group(data, 'pre_Q1')
+colnames(data)[16] ='Q1'
+fractions_by_group(data, 'Q1')
 fractions_by_group(data, 'post_Q1')
 fractions_by_group(data, 'postpost_Q1')
-colnames(data)[16] ='Q1'
+
 
 #### 2. Checking randomization #### 
 
 number_by_group(data, 'Q1')
 
 fractions_by_group(data, 'Q1')
-
+nrow(data)
 fractions_by_group_print(table_= data ,
                          column= 'Q1',
                          filename = "preteset_treatment" ) 
 
+fractions_by_group_print(table_= data ,
+                         column= 'post_Q1',
+                         filename = "postest_treatment" ) 
+table(is.na(data$post_Q1))
+fractions_by_group_print(table_= data ,
+                         column= 'postpost_Q1',
+                         filename = "Ppostest_treatment" ) 
 #### 3. Personal information cleaning ####
 
 ##### 3.2 Gender  ####
 data$pre_G01Q03 
 Gender = generate_perception_plot(data[data$pre_G01Q03!='', ], 'pre_G01Q03', 'Q1', 
                          "Gender Distribution by Groups", separate = F)
+
+a = as.data.frame(Gender$data)
+a = a[,c( 'group'  ,  'fraction','label')]
+a
 ggsave(file.path('Graph/', "gender_distribution.png"), Gender$plot)
 write.csv(Gender$data, file.path('Metadata/', "gender_distribution.csv"), row.names = FALSE)
 
@@ -36,17 +47,26 @@ data$pre_G01Q05
 toupper(data$pre_G01Q05)
 ##### 3.5 Type of School  ####
 table(data$pre_G01Q07)
+unique(data$pre_G01Q07)
 type_school = generate_perception_plot(data , 'pre_G01Q07', 'Q1', 
                                        'Type of School', separate = F)
 
 save_perception_plot_metadata(type_school , 'Type of School')
-
+a = as.data.frame(type_school$data)
+a = a[,c( 'group'  ,  'fraction','label')]
+a = sqldf("SELECT *, round(FRACTION*100, 3) AS FRACTION_ FROM a")
+a = a[,c( 'group'  ,  'FRACTION_','label')]
+a
 ##### 3.6 "Secondary School Field of Study"   ####
 data$pre_G01Q06 = categorize_education(data$pre_G01Q06)
 table(data$pre_G01Q06)
 field_study = generate_perception_plot(data , 'pre_G01Q06', 'Q1', 
               "Secondary School Field of Study", separate = F)
-
+a = as.data.frame(field_study$data)
+a = a[,c( 'group'  ,  'fraction','label')]
+a = sqldf("SELECT *, round(FRACTION*100, 3) AS FRACTION_ FROM a")
+a = a[,c( 'group'  ,  'FRACTION_','label')]
+a
 save_perception_plot_metadata(field_study , "Secondary School Field of Study")
 #### 4. Academic performance and Home Enviroment #### 
 ##### 4.1 Last Dutch Grade (Previous School Year) ####
@@ -67,7 +87,9 @@ data$pre_G02Q02 = translate_responses(data$pre_G02Q02, translations)
 
 Graph_ = generate_perception_plot(data , 'pre_G02Q02', 'Q1', 
                          "Language Used at Home", separate = F)
-
+a = as.data.frame(Graph_$data)
+a = a[,c( 'group'  ,  'fraction','label')]
+a
 save_perception_plot_metadata(Graph_,  "Language Used at Home")
 
 ##### 4.4 Parents' educational level  ####
@@ -98,13 +120,20 @@ data  =data %>%
   )
 
 Graph_ =generate_perception_plot(data,    'pre_G02Q08',    'Q1',   
-                                 "Frequency of Asking Teachers for Help", separate = F)
+                             "Frequency of Asking Teachers for Help", separate = F)
 save_perception_plot_metadata(Graph_,   "Frequency of Asking Teachers for Help")
+
+
 ##### 4.7 Statistics Learning Style #### 
 table(data$pre_LS_Mumford)
 Graph_ =generate_perception_plot(data,    'pre_LS_Mumford',    'Q1',   
-                                 "Honey and Mumford's Learning Styles", separate = F)
+                               "Honey and Mumford's Learning Styles", separate = F)
 save_perception_plot_metadata(Graph_,   "Honey and Mumford's Learning Styles")
+a = as.data.frame(Graph_$data)
+a = a[,c( 'group'  ,  'fraction','label')]
+a = sqldf("SELECT *, round(FRACTION*100, 2) AS FRACTION_ FROM a")
+a = a[,c( 'group'  ,  'FRACTION_','label')]
+a
 #### 5. Statistics self-perception #### 
  
 fractions_by_perception(data, 'pre_PT01[SQ001]', 'Do you think taxes are fair in your country?')

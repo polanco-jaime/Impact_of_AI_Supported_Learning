@@ -3,7 +3,7 @@ library(readr)
 library(dplyr)
 # posttest_piloto2 <- read_csv("~/Downloads/results-survey324716 (piloto).csv")
 
-
+posttest$interaction_time_minutes =  as.numeric(posttest$datestamp-posttest$startdate)
 # source(paste0(general_path,"Scripts/R/function_cleaning.R" ))
 
 ##### 1.1 Flag duplicates ####
@@ -19,7 +19,7 @@ posttest <- posttest %>%
   ))
 table(posttest$Q1)
 table(is.na(posttest$G00Q16))
-198/(198+958)
+201/(201+966)
 # Lost Around 18% for those who openened but not answer any question
 posttest = posttest[is.na(posttest$Q1)==F , ]
 
@@ -82,7 +82,7 @@ posttest = posttest[is.na(posttest$Q1)==F , ]
 ##### 1.3 Droping no completed at all #### 
 # posttest =posttest[is.na(posttest$`PT01[SQ005]`)==F,]
 # table(is.na(posttest$PTF11))
-114/(114+844)
+
 # Lost Around 12% for those who Dont complete main questions about learning
 table(is.na(posttest$groupTime14859))
 posttest =posttest[is.na(posttest$groupTime14859)==F,]
@@ -742,7 +742,11 @@ posttest$Q1 = ifelse(posttest$G01Q01=="JESSE.HERZEEL",'1',posttest$Q1)
 posttest$Q1 = ifelse(posttest$G01Q01=="IAN_VAN_WEYENBERGHE",'1',posttest$Q1)
 posttest$Q1 = ifelse(posttest$G01Q01=="DEVOS_GAÉTAN",'3',posttest$Q1)
 posttest$Q1 = ifelse(posttest$G01Q01=="MILAN_VERMEERSCH",'3',posttest$Q1)
+posttest$Q1 = ifelse(posttest$G01Q01=="MOONEN_WOUT",'3',posttest$Q1)
+posttest$Q1 = ifelse(posttest$G01Q01=="MARIAM_ELSORNGAWY",'2',posttest$Q1)
 
+posttest$AT = ifelse(posttest$G01Q01=="MARIAM_ELSORNGAWY",T,posttest$AT )
+posttest$AT = ifelse(posttest$G01Q01=="MOONEN_WOUT",T,posttest$AT )
 posttest$AT = ifelse(posttest$G01Q01=="MILAN_VERMEERSCH",T,posttest$AT )
 posttest$AT = ifelse(posttest$G01Q01=="DEVOS_GAÉTAN",T,posttest$AT )
 posttest$AT = ifelse(posttest$G01Q01=="IAN_VAN_WEYENBERGHE",T,posttest$AT   )
@@ -862,6 +866,12 @@ posttest$G01Q05 <- homogenize_school_name(posttest$G01Q05)
 
 ###### 2.4.1 Fixing school name ####
 posttest$G01Q05 = ifelse(posttest$G01Q01=="IAN_VAN_WEYENBERGHE",
+                         'Sint-Paulusinstituut',
+                         posttest$G01Q05)
+posttest$G01Q05 = ifelse(posttest$G01Q01=="DE_WAELE_LARS",
+                         'Sint-Paulusinstituut',
+                         posttest$G01Q05)
+posttest$G01Q05 = ifelse(posttest$G01Q01=="WICHELER_SEBBE",
                          'Sint-Paulusinstituut',
                          posttest$G01Q05)
 posttest$G01Q05 = ifelse(posttest$G01Q01=="MERVILLIE_LANDER",
@@ -1709,7 +1719,10 @@ posttest$id_student2 <- paste0(
                                     gsub( " ", "", gsub("[[:punct:]\\s]", "", posttest$G01Q05) ), 1, 8 ) ), "_",
                                   posttest$G01Q01
                                 )
+A=posttest[posttest$Score==0 & !is.na(posttest$interaction_time_minutes)==T, ]
+posttest$interaction_time_minutes = ifelse(posttest$interaction_time_minutes< 0,posttest$interaction_time_minutes*-1, posttest$interaction_time_minutes )
 
+# posttest = posttest[posttest$interaction_time_minutes/60>=3,]
 posttest= posttest[posttest$Score!=0, ]
 
 posttest = posttest[is.na(posttest$Score)==F, ]
@@ -1732,8 +1745,8 @@ posttest = flag_last_duplicate(posttest, "id_student2")
 # 
 # summary(posttest$groupTime14859)
 # 
-# p1=quantile(posttest$groupTime14859, probs = 0.05)
-# p99=quantile(posttest$groupTime14859, probs = 0.99)
+p1=quantile(posttest$groupTime14859, probs = 0.01)
+p99=quantile(posttest$groupTime14859, probs = 0.99)
 # 
 # posttest$anormal_asnwering_flag= ifelse(
 #   posttest$groupTime14859>=p99 |
@@ -1746,8 +1759,8 @@ posttest = flag_last_duplicate(posttest, "id_student2")
  # ifelse(posttest$Score<= 0.35 & posttest$Score >= 0.33,1,0 )
 # De la 28 a la 80
 
-
-
-posttest = posttest[posttest$groupTime14859>59, ]
-
+hist(posttest$groupTime14859,20)
+summary(posttest$groupTime14859)
+# posttest = posttest[posttest$groupTime14859>59, ]
+posttest$id = seq(1:nrow(posttest))
 

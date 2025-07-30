@@ -686,7 +686,7 @@ anonymize_column <- function(df, column_name) {
 filter_and_select <- function(df,  keyword) {
   # Define the columns to select
   search_column= "G01Q01"
-  selected_columns <- c("Q1", "G01Q03", "G01Q05", "G01Q01")
+  selected_columns <- c("Q1", "G01Q03", "G01Q05", "G01Q01", 'id')
   
   # Check if columns exist in the dataframe
   missing_columns <- setdiff(selected_columns, colnames(df))

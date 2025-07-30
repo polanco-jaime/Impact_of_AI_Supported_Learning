@@ -1,31 +1,31 @@
 "group","fraction","treatment_group","main","color","alpha","label"
-"Agree",0.141943734015345,"1","Do you think taxes are fair in your country?
+"Agree",0.142655367231638,"1","Do you think taxes are fair in your country?
 Control Group","skyblue",1,"Control Group"
-"Disagree",0.328644501278772,"1","Do you think taxes are fair in your country?
+"Disagree",0.327683615819209,"1","Do you think taxes are fair in your country?
 Control Group","skyblue",1,"Control Group"
-"Neutral",0.40920716112532,"1","Do you think taxes are fair in your country?
+"Neutral",0.411016949152542,"1","Do you think taxes are fair in your country?
 Control Group","skyblue",1,"Control Group"
-"Strongly Agree",0.0242966751918159,"1","Do you think taxes are fair in your country?
+"Strongly Agree",0.0254237288135593,"1","Do you think taxes are fair in your country?
 Control Group","skyblue",1,"Control Group"
-"Strongly Disagree",0.0959079283887468,"1","Do you think taxes are fair in your country?
+"Strongly Disagree",0.0932203389830508,"1","Do you think taxes are fair in your country?
 Control Group","skyblue",1,"Control Group"
-"Agree",0.160628019323671,"2","Do you think taxes are fair in your country?
+"Agree",0.159059474412171,"2","Do you think taxes are fair in your country?
 AI+Reduced Path","coral",0.7,"AI+Reduced Path"
-"Disagree",0.321256038647343,"2","Do you think taxes are fair in your country?
+"Disagree",0.32088520055325,"2","Do you think taxes are fair in your country?
 AI+Reduced Path","coral",0.7,"AI+Reduced Path"
-"Neutral",0.394927536231884,"2","Do you think taxes are fair in your country?
+"Neutral",0.406639004149378,"2","Do you think taxes are fair in your country?
 AI+Reduced Path","coral",0.7,"AI+Reduced Path"
-"Strongly Agree",0.0193236714975845,"2","Do you think taxes are fair in your country?
+"Strongly Agree",0.016597510373444,"2","Do you think taxes are fair in your country?
 AI+Reduced Path","coral",0.7,"AI+Reduced Path"
-"Strongly Disagree",0.103864734299517,"2","Do you think taxes are fair in your country?
+"Strongly Disagree",0.0968188105117566,"2","Do you think taxes are fair in your country?
 AI+Reduced Path","coral",0.7,"AI+Reduced Path"
-"Agree",0.163449163449163,"3","Do you think taxes are fair in your country?
+"Agree",0.161527165932452,"3","Do you think taxes are fair in your country?
 Tailored AI","lightgreen",0.5,"Tailored AI"
-"Disagree",0.303732303732304,"3","Do you think taxes are fair in your country?
+"Disagree",0.31424375917768,"3","Do you think taxes are fair in your country?
 Tailored AI","lightgreen",0.5,"Tailored AI"
-"Neutral",0.405405405405405,"3","Do you think taxes are fair in your country?
+"Neutral",0.402349486049927,"3","Do you think taxes are fair in your country?
 Tailored AI","lightgreen",0.5,"Tailored AI"
-"Strongly Agree",0.0283140283140283,"3","Do you think taxes are fair in your country?
+"Strongly Agree",0.0249632892804699,"3","Do you think taxes are fair in your country?
 Tailored AI","lightgreen",0.5,"Tailored AI"
-"Strongly Disagree",0.0990990990990991,"3","Do you think taxes are fair in your country?
+"Strongly Disagree",0.0969162995594714,"3","Do you think taxes are fair in your country?
 Tailored AI","lightgreen",0.5,"Tailored AI"
